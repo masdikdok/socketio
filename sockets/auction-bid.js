@@ -6,22 +6,26 @@ module.exports.listen = function(io) {
 
         socket.on('initialBid', (data) => {
 
-            // request.post('https://flaviocopes.com/todos', {
-            //     json: {
-            //         todo: 'Buy the milk'
-            //     }
-            // }, (error, res, body) => {
-            //     if (error) {
-            //         console.error(error)
-            //         return
-            //     }
-            //     console.log(`statusCode: ${res.statusCode}`)
-            //     console.log(body)
-            // });
+            var request = require("request");
 
-            var result = "Berhasil kirim data " + data;
+            var options = {
+                method: 'POST',
+                url: data.url,
+                headers: {
+                    'cache-control': 'no-cache',
+                    'Accept' : 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                form: {
+                    idauction: data.auctionId
+                }
+            };
 
-            auctionBid.emit(responsInitialBid, result);
+            request(options, function(error, response, body) {
+                if (error) throw new Error(error);
+
+                socket.emit('responsInitialBid', body);
+            });
 
         });
 
