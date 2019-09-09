@@ -2,11 +2,12 @@ let express = require('express');
 let app = express();
 let server = require('http').createServer(app);
 let io = require('socket.io')(server);
+var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
-server.listen(3000, function() {
-    console.log('listening on *:3000');
+server.listen(port, function() {
+    console.log('listening on *:' + port);
 });
 
 
