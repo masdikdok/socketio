@@ -1,24 +1,26 @@
 {
-  "name": "socketio",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/masdikdok/socketio.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/masdikdok/socketio/issues"
-  },
-  "homepage": "https://github.com/masdikdok/socketio#readme",
-  "dependencies": {
-    "express": "^4.15.2",
-    "lodash": "^4.17.15",
-    "socket.io": "^2.2.0"
-  }
+    "name": "socketio",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/masdikdok/socketio.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/masdikdok/socketio/issues"
+    },
+    "homepage": "https://github.com/masdikdok/socketio#readme",
+    "dependencies": {
+        "express": "^4.15.2",
+        "lodash": "^4.17.15",
+        "request": "^2.88.0",
+        "socket.io": "^2.2.0"
+    }
 }
