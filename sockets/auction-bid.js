@@ -21,7 +21,7 @@ module.exports.listen = function(io) {
 
             var result = "Berhasil kirim data " + data;
 
-            auction.emit(responsInitialBid, result);
+            auctionBid.emit(responsInitialBid, result);
 
         });
 
