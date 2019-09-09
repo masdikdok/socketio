@@ -1,5 +1,5 @@
 // Membuat koneksi
-let socket = io.connect('http://localhost:3000/chat');
+let socket = io.connect('http://localhost:3000');
 
 let myUsername = '';
 let userMengetik = [];
