@@ -16,6 +16,7 @@ module.exports.listen = function(io) {
     });
 
     setInterval(function(){
+
         if(urlApi != ''){
 
             var options = {
@@ -39,6 +40,7 @@ module.exports.listen = function(io) {
             });
 
         }
+
     }, 60000);
 
     return io;
