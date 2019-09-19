@@ -15,8 +15,9 @@ module.exports.listen = function(io) {
 
     });
 
-    if(urlApi != ''){
-        setInterval(function(){
+    setInterval(function(){
+        if(urlApi != ''){
+
             var options = {
                 method: 'POST',
                 url: urlApi + "/checkAuctionExpired",
@@ -37,8 +38,8 @@ module.exports.listen = function(io) {
 
             });
 
-        }, 60000);
-    }
+        }
+    }, 60000);
 
     return io;
 }
