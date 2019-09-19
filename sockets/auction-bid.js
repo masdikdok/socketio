@@ -2,7 +2,7 @@ module.exports.listen = function(io) {
     const request = require('request');
 
     let auctionBid = io.of('/auction-bid');
-    let urlApi = 'http://fansclub.asia/api/socket';
+    let urlApi = '';
 
     auctionBid.on('connection', (socket) => {
         socket.on('setUrlApi', (data) => {
@@ -15,28 +15,30 @@ module.exports.listen = function(io) {
 
     });
 
-    setInterval(function(){
-        var options = {
-            method: 'POST',
-            url: urlApi + "/checkAuctionExpired",
-            headers: {
-                'cache-control': 'no-cache',
-                'Accept': 'application/json',
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        };
+    if(urlApi != ''){
+        setInterval(function(){
+            var options = {
+                method: 'POST',
+                url: urlApi + "/checkAuctionExpired",
+                headers: {
+                    'cache-control': 'no-cache',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            };
 
-        request(options, function(error, response, body) {
-            if (error) throw new Error(error);
+            request(options, function(error, response, body) {
+                if (error) throw new Error(error);
 
-            var hasilRequest = JSON.parse(body);
-            if(hasilRequest.result){
-                auctionBid.emit('checkAuctionExpired', hasilRequest.data);
-            }
+                var hasilRequest = JSON.parse(body);
+                if(hasilRequest.result){
+                    auctionBid.emit('checkAuctionExpired', hasilRequest.data);
+                }
 
-        });
+            });
 
-    }, 60000);
+        }, 60000);
+    }
 
     return io;
 }
