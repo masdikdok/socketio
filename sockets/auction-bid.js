@@ -2,7 +2,7 @@ module.exports.listen = function(io) {
     const request = require('request');
 
     let auctionBid = io.of('/auction-bid');
-    let urlApi = '';
+    let urlApi = 'http://fansclub.asia/api/socket';
 
     auctionBid.on('connection', (socket) => {
         socket.on('setUrlApi', (data) => {
