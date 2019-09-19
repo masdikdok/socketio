@@ -15,6 +15,33 @@ module.exports.listen = function(io) {
 
     });
 
+    setInterval(function(){
+
+        if(urlApi != ''){
+
+            var options = {
+                method: 'POST',
+                url: urlApi + "/checkAuctionExpired",
+                headers: {
+                    'cache-control': 'no-cache',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            };
+
+            request(options, function(error, response, body) {
+                if (error) throw new Error(error);
+
+                var hasilRequest = JSON.parse(body);
+                if(hasilRequest.result){
+                    auctionBid.emit('checkAuctionExpired', hasilRequest.data);
+                }
+
+            });
+
+        }
+
+    }, 60000);
 
     return io;
 }
