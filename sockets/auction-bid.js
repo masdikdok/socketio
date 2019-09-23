@@ -28,7 +28,7 @@ module.exports.listen = function(io) {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             };
-            
+
             request(options, function(error, response, body) {
                 if (error) throw new Error(error);
 
@@ -43,7 +43,7 @@ module.exports.listen = function(io) {
 
         }
 
-    }, 6000);
+    }, 60000);
 
     return io;
 }
