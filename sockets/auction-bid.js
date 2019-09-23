@@ -28,12 +28,7 @@ module.exports.listen = function(io) {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             };
-
-            try {
-
-            } catch (e) {
-
-            }
+            
             request(options, function(error, response, body) {
                 if (error) throw new Error(error);
 
