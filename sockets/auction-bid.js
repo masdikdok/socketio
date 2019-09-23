@@ -29,19 +29,26 @@ module.exports.listen = function(io) {
                 }
             };
 
+            try {
+
+            } catch (e) {
+
+            }
             request(options, function(error, response, body) {
                 if (error) throw new Error(error);
 
-                var hasilRequest = JSON.parse(body);
-                if(hasilRequest.result){
-                    auctionBid.emit('checkAuctionExpired', hasilRequest.data);
+                if(response.statusCode == 200 || response.statusCode == '200'){
+                    var hasilRequest = JSON.parse(body);
+                    if(hasilRequest.result){
+                        auctionBid.emit('checkAuctionExpired', hasilRequest.data);
+                    }
                 }
 
             });
 
         }
 
-    }, 60000);
+    }, 6000);
 
     return io;
 }
