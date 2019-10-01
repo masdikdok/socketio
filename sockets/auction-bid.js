@@ -30,8 +30,9 @@ module.exports.listen = function(io) {
             };
 
             request(options, function(error, response, body) {
+                if (error) throw new Error(error);
 
-                if(response && (response.statusCode == 200 || response.statusCode == '200')){
+                if(!!(response) && (response.statusCode == 200 || response.statusCode == '200')){
                     var hasilRequest = JSON.parse(body);
                     if(hasilRequest.result){
                         auctionBid.emit('checkAuctionExpired', hasilRequest.data);
